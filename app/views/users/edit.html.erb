@@ -1,0 +1,25 @@
+<div class="m-auto">
+  <%= form_for(@user) do |f| %>
+    <h2 class="text-2xl font-bold mb-4">Edit User</h2>
+    <div class="mb-4">
+      <%= f.label :email, class: "block font-semibold mb-2" %>
+      <%= f.email_field :email, class: "form-input" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password, class: "block font-semibold mb-2" %>
+      <%= f.password_field :password, class: "form-input" %>
+    </div>
+
+    <div class="mb-6">
+      <%= f.label :password_confirmation, class: "block font-semibold mb-2" %>
+      <%= f.password_field :password_confirmation, class: "form-input" %>
+    </div>
+
+    <div class="flex items-center justify-between mt-3">
+      <%= f.submit "Save changes", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      <%= link_to "Cancel", users_path, class: "text-gray-600 hover:underline" %>
+    </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="flex flex-col m-auto">
+  <h1>All orders</h1>
+  <% if @orders.any? %>
+    <table>
+      <thead>
+      <tr>
+        <th>OrderId</th>
+        <th>Amount</th>
+        <th>CreatedAt</th>
+        <th>Products</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr class="p-5">
+          <td class="p-2"><%= order.id %></td>
+          <td class="p-2"><%= order.amount %></td>
+          <td class="p-2"><%= order.created_at.strftime("%d.%m.%Y") %></td>
+          <td class="p-2">
+            <% order.order_descriptions.each do |description| %>
+              <p><%= description.product.name %>, <%= description.quantity %> шт.</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>У вас еще нет заказов</p>
+  <% end %>
+</div>

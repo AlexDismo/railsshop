@@ -1,0 +1,16 @@
+<div class="m-auto flex flex-col">
+  <h1 class="mb-10">Cart</h1>
+
+  <% @cart_items.each do |product_id, product_info| %>
+    <% name = product_info["name"] %>
+    <% quantity = product_info["quantity"] %>
+    <tr class="p-5">
+      <td><%= name %> -</td>
+      <td><%= quantity %></td>
+      <%= link_to 'Delete', remove_item_path(product_id), data: {turbo_method: :delete}, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' %>
+    </tr>
+  <% end %>
+  <%= link_to 'Clear Cart', clear_cart_path, data: {turbo_method: :delete}, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-10' %>
+  <%= link_to 'Checkout', checkout_path, data: {turbo_method: :post}, class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full mt-10' %>
+  <%= link_to 'All Orders', orders_path, class: 'text-blue-500 hover:underline mt-10' %>
+</div>

@@ -1,0 +1,16 @@
+<div class="m-auto">
+  <div class="grid grid-cols-5 gap-10">
+    <% if @products && @products.any? %>
+      <% @products.each do |product| %>
+        <div class="border p-5">
+          <h1 class="text-center text-2xl font-bold"><%= product.name %></h1>
+          <p>Description: <%= product.description %></p>
+          <p>Price: <%= product.price %></p>
+          <button class="border px-3 bg-gray-300 hover:bg-gray-200"><%= link_to 'Show', product %></button>
+        </div>
+      <% end %>
+    <% else %>
+  </div>
+    <p>No products found</p>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@
   </div>
 
   <%= form_tag(add_item_product_path(product_id: @product.id), method: :post, data: { turbo: false }) do %>
-    <%= number_field_tag :quantity, 1, min: 1 %>
+    <%= number_field_tag :quantity, 1, min: 1, max: 10 %>
     <%= submit_tag 'Add to cart', class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full' %>
   <% end %>
 

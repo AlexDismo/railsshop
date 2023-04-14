@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:add_item]
 
   def new
     @product = Product.new
@@ -46,16 +47,18 @@ class ProductsController < ApplicationController
     quantity = params[:quantity].to_i
     session[:cart] ||= {}
 
-    if session[:cart].has_key?(product.name)
-      session[:cart][product.name]["quantity"] += quantity
+    if quantity > 100
+      redirect_to product_path(product), alert: "Quantity should be less than or equal to 100"
     else
-      session[:cart][product.name] = { "name" => product.name, "quantity" => quantity }
+      if session[:cart].has_key?(product.name)
+        session[:cart][product.name]["quantity"] += quantity
+      else
+        session[:cart][product.name] = { "name" => product.name, "quantity" => quantity }
+      end
+
+      redirect_to carts_path
     end
-
-    redirect_to carts_path
   end
-
-
 
 
 

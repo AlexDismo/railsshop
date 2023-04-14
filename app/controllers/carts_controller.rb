@@ -34,7 +34,8 @@ class CartsController < ApplicationController
   end
 
   def user_orders
-    @orders = current_user.orders.includes(:order_descriptions)
+    if current_user.present?
+      @orders = current_user.orders.includes(:order_descriptions)
+    end
   end
-
 end

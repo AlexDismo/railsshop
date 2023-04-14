@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres
+    container_name: shoptest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=shoptest
+      - POSTGRES_PASSWORD=admin
+    command: postgres
+    restart: always
